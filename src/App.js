@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   return (
     <div className="container">
-      <h1>🚀 CI/CD SUCCESS</h1>
+      <h1>🚀 Karthik </h1>
       <h2>Deployed using GitHub Actions + EC2</h2>
 
       <div className="box">
