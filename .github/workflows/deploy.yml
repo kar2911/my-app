@@ -1,4 +1,4 @@
-name: Auto Deploy React (Self Hosted)
+name: Nginx React Deploy
 
 on:
   push:
@@ -10,16 +10,30 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Pull latest code into EC2 project
+      - name: Go to project folder
+        run: cd ~/my-app
+
+      - name: Pull latest code
         run: |
           cd ~/my-app
-          git pull origin main
+          git fetch origin
+          git reset --hard origin/main
 
       - name: Install dependencies
         run: |
           cd ~/my-app
           npm install
 
-      - name: Restart React App
+      - name: Build React app
         run: |
-          pm2 restart react-app
+          cd ~/my-app
+          npm run build
+
+      - name: Deploy to Nginx
+        run: |
+          sudo rm -rf /var/www/html/*
+          sudo cp -r ~/my-app/build/* /var/www/html/
+
+      - name: Restart Nginx
+        run: |
+          sudo systemctl restart nginx
