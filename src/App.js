@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="container">
       <h1>🚀 Karthik </h1>
-      <h2>Deployed using GitHub Actions + EC2</h2>
+      <h2>Deployed using GITHUB ACTIONS HELLOOO WORLD + EC2</h2>
 
       <div className="box">
         <p>🔥 This change came from GitHub push</p>
